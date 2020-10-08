@@ -1,0 +1,523 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>机器人手册</title><link href='https://fonts.loli.net/css?family=Didact+Gothic&display=swap&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit inherit; background-repeat: inherit inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; word-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+@media screen and (max-width: 500px) { 
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px !important; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit inherit; background-repeat: inherit inherit; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; background-repeat: initial initial; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print { 
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; background-position: initial initial; background-repeat: initial initial; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) { 
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; background-position: initial initial; background-repeat: initial initial; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; background-repeat: initial initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background-color: rgb(255, 255, 0); color: rgb(0, 0, 0); background-position: initial initial; background-repeat: initial initial; }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+
+
+@include-when-export url(https://fonts.loli.net/css?family=Didact+Gothic&display=swap&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext);
+
+/* cyrillic-ext */
+/* cyrillic */
+:root {
+	--window-border: none;
+	--typora-center-window-title: true;
+	--active-file-bg-color: #f3f3f3;
+	--bg-color: #fcfcfc;
+	--control-text-color: #777;
+}
+
+.mac-seamless-mode #typora-sidebar {
+	top: 20px;
+	padding-top: 0;
+	height: auto;
+}
+
+html,
+body,
+#write{
+	background: #fcfcfc;
+	background: var(--bg-color);
+	font-family: 'TeXGyreAdventor', "Century Gothic", "Didact Gothic", "Yu Gothic", sans-serif;
+	font-weight: 300;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: #111;
+	font-family: 'TeXGyreAdventor', "Century Gothic", "Didact Gothic", "Yu Gothic", sans-serif;
+}
+
+html {
+	font-size:16px;
+}
+
+#write {
+	max-width: 914px;
+	text-align: justify;
+}
+
+#write>h1:first-child {
+	margin-top: 2.75rem;
+}
+#write>h2:first-child {
+	margin-top: 1.75rem;
+}
+#write>h3:first-child {
+	margin-top: 1rem;
+}
+#write>h4:first-child {
+	margin-top: 0.5rem;
+}
+h1 {
+	font-weight: normal;
+	line-height: 4rem;
+	margin: 0 0 1.75rem;
+	padding: 20px 30px;
+	text-align: center;
+	text-transform: uppercase;
+	margin-top: 4rem;
+}
+h2 {
+	font-weight: normal;
+	line-height: 3rem;
+	margin: 0 0 1.9375rem;
+	padding: 0 30px;
+	text-align: center;
+	text-transform: uppercase;
+	margin-top: 3rem
+}
+h3 {
+	font-weight: normal;
+}
+h4 {
+	font-weight: normal;
+}
+h5 {
+	font-size: 1.125rem;
+	font-weight: normal;
+}
+h6 {
+	font-size: 1rem;
+	font-weight: bold;
+}
+p {
+	color: #111;
+	font-size: 1rem;
+	line-height: 1.75rem;
+	margin: 0 0 1.25rem;
+}
+#write>h3.md-focus:before {
+	left: -1.875rem;
+	top: 0.5rem;
+	padding: 2px;
+}
+#write>h4.md-focus:before {
+	left: -1.875rem;
+	top: 0.3125rem;
+	padding: 2px;
+}
+#write>h5.md-focus:before {
+	left: -1.875rem;
+	top: 0.25rem;
+	padding: 2px;
+}
+#write>h6.md-focus:before {
+	left: -1.875rem;
+	top: .125rem;
+	padding: 2px;
+}
+@media screen and (max-width: 48em) {
+	blockquote {
+		margin-left: 1rem;
+		margin-right: 0;
+		padding: 0.5em;
+	}
+	.h1,
+	h1 {
+		font-size: 2.827rem;
+	}
+	.h2,
+	h2 {
+		font-size: 1.999rem;
+	}
+	.h3,
+	h3 {
+		font-size: 1.413rem;
+	}
+	.h4,
+	h4 {
+		font-size: 1.250rem;
+	}
+	.h5,
+	h5 {
+		font-size: 1.150rem;
+	}
+	.h6,
+	h6 {
+		font-size: 1rem;
+	}
+}
+a,
+.md-def-url {
+	color: #990000;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+table {
+	margin-bottom: 20px
+}
+table th,
+table td {
+	padding: 8px;
+	line-height: 1.25rem;
+	vertical-align: top;
+	border-top: 1px solid #ddd
+}
+table th {
+	font-weight: bold
+}
+table thead th {
+	vertical-align: bottom
+}
+table caption+thead tr:first-child th,
+table caption+thead tr:first-child td,
+table colgroup+thead tr:first-child th,
+table colgroup+thead tr:first-child td,
+table thead:first-child tr:first-child th,
+table thead:first-child tr:first-child td {
+	border-top: 0
+}
+table tbody+tbody {
+	border-top: 2px solid #ddd
+}
+code, .md-fences {
+	padding: .5em;
+	/*background: #f0f0f0;*/
+	border: 1px solid #ccc;
+	padding: .1em;
+	font-size: 0.9em;
+	margin-left: 0.2em;
+	margin-right: 0.2em;
+}
+.md-fences {
+	margin: 0 0 20px;
+	font-size: 1em;
+	padding: 0.3em 1em;
+  	padding-top: 0.4em;
+}
+.task-list{
+	padding-left: 0;
+}
+
+.task-list-item {
+	padding-left:2.125rem;
+}
+
+input {
+	border-style: ridge;
+}
+
+.task-list-item input {
+	top: 3px;
+}
+
+.md-task-list-item input {
+	margin-left: -1.5em;
+}
+
+.task-list-item input:before {
+	content: "";
+	display: inline-block;
+	width: 1rem;
+	height: 1rem;
+	vertical-align: middle;
+	text-align: center;
+	border: 1px solid gray;
+	background-color: #fdfdfd;
+	margin-left: 0;
+	-webkit-appearance: none;
+	margin-top: -1rem;
+}
+
+.typora-node .task-list-item input:before {
+	top: 0.3ex;
+	position: absolute;
+}
+
+.task-list-item input:checked:before,
+.task-list-item input[checked]:before{
+	content: '\25FC';
+	/*◘*/
+	font-size: 0.8125rem;
+	line-height: 0.9375rem;
+}
+
+/* Chrome 29+ */
+@media screen and (-webkit-min-device-pixel-ratio:0)
+  and (min-resolution:.001dpcm) {
+    .task-list-item input:before {
+    	margin-top: -0.2rem;
+    }
+
+    .task-list-item input:checked:before,
+	.task-list-item input[checked]:before {
+		margin-top: -0.2rem;
+	}
+}
+
+blockquote {
+	margin: 0 0 1.11111rem;
+	padding: 0.5rem 1.11111rem 0 1.05556rem;
+	border-left: 1px solid gray;
+}
+blockquote,
+blockquote p {
+	line-height: 1.6;
+	color: #6f6f6f;
+}
+#write pre.md-meta-block {
+	min-height: 30px;
+	background: #f8f8f8;
+	padding: 1.5em;
+	font-weight: 300;
+	font-size: 1em;
+	padding-bottom: 1.5em;
+	padding-top: 3em;
+    margin-top: -1.5em;
+	color: #999;
+	
+	width: 100vw;
+	max-width: calc(100% + 60px);
+	margin-left: -30px;
+	border-left: 30px #f8f8f8 solid;
+	border-right: 30px #f8f8f8 solid;
+}
+.MathJax_Display {
+	font-size: 0.9em;
+	margin-top: 0.5em;
+	margin-bottom: 0;
+}
+p.mathjax-block,
+.mathjax-block {
+	padding-bottom: 0;
+}
+.mathjax-block>.code-tooltip {
+	bottom: 5px;
+	box-shadow: none;
+}
+.md-image>.md-meta {
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+.md-image>img {
+	margin-top: 2px;
+}
+.md-image>.md-meta:first-of-type:before {
+	padding-left: 4px;
+}
+
+#typora-source {
+	color: #555;
+}
+
+/** ui for windows **/
+#md-searchpanel {
+    border-bottom: 1px solid #ccc;
+}
+
+#md-searchpanel .btn {
+    border: 1px solid #ccc;
+}
+
+#md-notification:before {
+	top: 14px;
+}
+
+#md-notification {
+	background: #eee;
+}
+
+.megamenu-menu-panel .btn {
+	border: 1px solid #ccc;
+}
+
+#typora-sidebar {
+	box-shadow: none;
+}
+
+.file-list-item ,
+.show-folder-name .file-list-item {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	line-height: 20px;
+}
+
+.file-list-item-summary {
+	height: 40px;
+	line-height: 20px;
+}
+
+.ty-table-edit {
+	background: #ededed;
+}
+
+.dropdown-menu .divider {
+	border-color: #e5e5e5;
+}
+
+
+</style>
+</head>
+<body class='typora-export' >
+<div  id='write'  class = 'is-mac'><h2><a name="操作说明书反馈联系qq393727164" class="md-header-anchor"></a><span>操作说明书(反馈联系QQ：393727164)</span></h2><hr /><p><img src="https://img.shields.io/badge/Platform-Mirai-orange.svg" referrerpolicy="no-referrer" alt="Platform">
+<img src="https://img.shields.io/badge/For-福建农林大学&amp;福建农林大学金山学院-blue.svg" referrerpolicy="no-referrer" alt="For">
+<img src="https://img.shields.io/badge/Using-正在为430+个新生群&amp;服务群提供服务-blue.svg" referrerpolicy="no-referrer" alt="Using">
+<img src="https://img.shields.io/badge/language-CSharp-green.svg" referrerpolicy="no-referrer">
+<img src="https://img.shields.io/github/repo-size/SmileZXLee/KQRobotExtensionForFAFU" referrerpolicy="no-referrer" alt="repo-size">
+<img src="https://img.shields.io/github/last-commit/SmileZXLee/KQRobotExtensionForFAFU" referrerpolicy="no-referrer" alt="last-commit"><br></p><h3><a name="机器人管理员权限控制" class="md-header-anchor"></a><span>机器人管理员权限控制</span></h3><h4><a name="1添加管理员" class="md-header-anchor"></a><span>1.添加管理员</span></h4><ul><li><p><span>指令：</span><code>添加管理员</code><span> 「QQ号或@QQ」 </span><code>权限</code><span> 「权限等级」</span></p><p><span>权限：限超级管理员</span></p><p><span>例：添加管理员 123456 权限 1</span></p><p><span>注：权限等级为1则代表此管理员有完整的管理员权限，权限等级为2则代表此管理员不拥有如修改学习内容、删除学习内容、移除成员、拉黑成员等敏感权限。</span></p></li></ul><h4><a name="2删除管理员" class="md-header-anchor"></a><span>2.删除管理员</span></h4><ul><li><p><span>指令：</span><code>删除管理员</code><span> 「管理员QQ」</span></p><p><span>权限：限超级管理员</span></p><p><span>例：删除管理员 123456</span></p><p><span>注：取消管理员权限。</span></p></li></ul><h4><a name="3查询管理员列表" class="md-header-anchor"></a><span>3.查询管理员列表</span></h4><ul><li><p><span>指令：</span><code>管理员列表</code></p><p><span>权限：限超级管理员</span></p><p><span>注：查询所有的管理员信息，包含管理员QQ与授权等级。</span></p></li></ul><hr /><h3><a name="学习与回答功能" class="md-header-anchor"></a><span>学习与回答功能</span></h3><p><span>注：支持学习多条相同问题，若触发结果中多条问题长度一致，则随机回复一条问题的答案，若触发结果中多条问题长度不一致，则优先回答长度最长的问题所对应的答案；触发时@机器人的内容会被排除在外，例如 @机器人 小照相，会自动提取信息“小照相”并查询其答案。</span></p><h4><a name="1学习功能-精确匹配" class="md-header-anchor"></a><span>1.学习功能-精确匹配</span></h4><ul><li><p><span>指令：</span><code>学习</code><span> 「问题」 </span><code>回答</code><span> 「答案」</span></p><p><span>权限：限超级管理员与机器人管理员（权限1或2）</span></p><p><span>例：学习 小照相 回答 我来啦</span></p><p><span>注：如发送：学习 小照相 回答 我来啦，则只有发送“小照相”时，机器人才会回答“我来啦”。学习功能支持学习文字，回答文字+图片；学习图片，回答文字+图片等。</span></p></li></ul><h4><a name="2学习功能-包含匹配" class="md-header-anchor"></a><span>2.学习功能-包含匹配</span></h4><ul><li><p><span>指令：</span><code>包含学习</code><span> 「问题」 </span><code>回答</code><span>  「答案」</span></p><p><span>权限 ：限超级管理员与机器人管理员（权限1或2）</span></p><p><span>例：包含学习 小照相 回答 我来啦</span></p><p><span>注：如发送：包含学习 小照相 回答 我来啦，当发送的文字包含“小照相”时，机器人都会回答“我来啦”</span></p></li></ul><h4><a name="3学习功能-模糊匹配" class="md-header-anchor"></a><span>3.学习功能-模糊匹配</span></h4><ul><li><p><span>指令：</span><code>模糊学习</code><span> 「问题(%代表中间匹配任意长度字符串，包括长度0)」 </span><code>回答</code><span>  「答案」</span></p><p><span>权限 ：限超级管理员与机器人管理员（权限1或2）</span></p><p><span>例：模糊学习 欢迎报考%专业 回答 请勿推销本专业！</span></p><p><span>注：如发送：模糊学习 欢迎报考%专业 回答 请勿推销本专业！，当发送的文字为：欢迎报考xx专业时，机器人都会回答“请勿推销本专业！”。若发送文字为：欢迎报考福建农林大学，则不会触发，以上模糊学习的意思是：以“欢迎报考”开头，“专业”结尾的内容才会触发词条，此外，形如：“测%试%你好”的格式同样支持，发送内容为：测123试123你好 时会自动匹配。</span></p></li></ul><h4><a name="4查询功能" class="md-header-anchor"></a><span>4.查询功能</span></h4><ul><li><p><span>指令：</span><code>查询</code><span> 「问题」</span></p><p><span>权限：限超级管理员与机器人管理员（权限1或2）</span></p><p><span>例：查询 小照相</span></p><p><span>注：如发送：查询 小照相，如果此词条存在，机器人会回答此词条的相关信息，包含问题id，问题，回答，教学者和匹配模式。</span></p></li></ul><h4><a name="5包含查询功能" class="md-header-anchor"></a><span>5.包含查询功能</span></h4><ul><li><p><span>指令：</span><code>包含查询</code><span> 「问题」</span></p><p><span>权限：限超级管理员与机器人管理员（权限1或2）</span></p><p><span>例：包含查询 小</span></p><p><span>注：如发送：包含查询 小，如果问题包含“小”的词条存在，机器人会查询出所有相关信息，包含问题id，问题，回答，教学者和匹配模式。</span></p></li></ul><h4><a name="5查询所有词条" class="md-header-anchor"></a><span>5.查询所有词条</span></h4><ul><li><p><span>指令：</span><code>学习项</code><span> 或 </span><code>词库</code></p><p><span>权限：无限制</span></p><p><span>例：学习项</span></p><p><span>注：机器人会将已经学习的所有问题（触发词）绘制在一张图片上发出，并统计数据总条数。</span></p></li></ul><h4><a name="6修改功能" class="md-header-anchor"></a><span>6.修改功能</span></h4><ul><li><p><span>指令：</span><code>修改</code><span> 「问题ID」 </span><code>回答</code><span> 「答案」</span></p><p><span>权限：限超级管理员与机器人管理员（权限1）</span></p><p><span>例：修改 12 回答 我不在</span></p><p><span>注：机器人学习内容修改功能，若查询出来的“小照相”词条的问题id为12，发送：修改 12 回答 我不在，则此时发送“小照相”，机器人会回答“我不在”。</span></p></li></ul><h4><a name="7删除功能" class="md-header-anchor"></a><span>7.删除功能</span></h4><ul><li><p><span>指令：</span><code>删除</code><span> 「问题ID」</span></p><p><span>权限：限超级管理员与机器人管理员（权限1）</span></p><p><span>例：删除 12</span></p><p><span>注：删除id为12的词条。</span></p></li></ul><h4><a name="8批量删除功能" class="md-header-anchor"></a><span>8.批量删除功能</span></h4><ul><li><p><span>指令：</span><code>批量删除</code><span> 「问题」</span></p><p><span>权限：限超级管理员与机器人管理员（权限1）</span></p><p><span>例：批量删除 小照相</span></p><p><span>注：删除问题为“小照相”的所有词条。</span></p></li></ul><hr /><h3><a name="群成员管理机器人需为群管理员" class="md-header-anchor"></a><span>群成员管理【机器人需为群管理员】</span></h3><h4><a name="1入群自动审核" class="md-header-anchor"></a><span>1.入群自动审核</span></h4><ul><li><p><span>规则1：在新生群中，若申请者的QQ等级大于5级，则机器人会自动提取其入群申请中的学号进行校验，若校验通过则自动同意其入群申请，并将其群名片更改为入群年份-专业-昵称，若未通过校验或未填写学号，则忽略其入群申请，等待管理员审核。</span></p><p><span>学号校验的规则需要自行添加，添加命令为</span><code>添加学号校验</code><span> 学号第4-7位 </span><code>专业</code><span> 对应的专业名称；同时可以通过 </span><code>修改学号校验</code><span> 学号第4-7位 </span><code>专业</code><span> 对应专业名称 来进行修改；通过 </span><code>删除学号校验</code><span> 学号第4-7位，进行删除；通过 </span><code>查询学号校验</code><span> 学号第4-7位，进行查询；通过</span><code>学号校验项</code><span>查询所有已记录的学号校验规则。</span></p></li><li><p><span>规则2：在新生群中，若申请者的QQ等级大于5级，则机器人会自动提取其入群申请中的考生号或身份证号至校招生办官网进行校验，若校验通过则自动同意其入群申请，并将其群名片更改为20-专业-昵称，若未通过校验或未填写学号，则忽略其入群申请，等待管理员审核。</span></p></li><li><p><span>规则3：在iFAFU官方群中，若申请者的QQ等级大于5级，则机器人会自动提取其入群申请的信息，如果包含“安卓”或“iOS”（大小写均可），则通过校验，并将其群名片更改为安卓（或iOS）-昵称。【因为iFAFU官方群，入群申请的问题为：您是安卓用户还是iOS用户】。</span></p></li></ul><h4><a name="2开启关闭自动审核功能" class="md-header-anchor"></a><span>2.开启/关闭自动审核功能</span></h4><ul><li><p><span>指令：</span><code>开启自动审核</code><span> 、 </span><code>关闭自动审核</code></p><p><span>权限：限超级管理员与机器人管理员（权限1或2）或QQ群群主和群管理员</span></p><p><span>例：开启自动审核</span></p><p><span>注：开启自动审核后机器人将自动通过学号、考生号或身份证号校验加群申请并将新成员群名片改为：入学年份-专业-昵称。建议管理员在入群问题中引导申请者输入学号、考生号等相关信息。</span></p></li></ul><h4><a name="3开启关闭入群申请提醒仅当开启自动审核后才有入群申请提醒" class="md-header-anchor"></a><span>3.开启/关闭入群申请提醒【仅当开启自动审核后才有入群申请提醒】</span></h4><ul><li><p><span>指令：</span><code>开启入群申请提醒</code><span> 、 </span><code>关闭入群申请提醒</code></p><p><span>权限：限超级管理员与机器人管理员（权限1或2）或QQ群群主和群管理员</span></p><p><span>例：开启入群申请提醒</span></p><p><span>注：入群申请提醒默认开启，关闭后当机器人检测到新成员入群申请时，不会在群内提示，但是无论是否关闭入群申请提醒，都不会影响机器人的自动审核。</span></p></li></ul><h4><a name="4开启关闭入群提醒仅当开启自动审核后才有入群提醒" class="md-header-anchor"></a><span>4.开启/关闭入群提醒【仅当开启自动审核后才有入群提醒】</span></h4><ul><li><p><span>指令：</span><code>开启入群提醒</code><span> 、 </span><code>关闭入群提醒</code></p><p><span>权限：限超级管理员与机器人管理员（权限1或2）或QQ群群主和群管理员</span></p><p><span>例：开启入群提醒</span></p><p><span>注：入群提醒默认开启，关闭后当机器人检测到新成员入群时，不会在群内提示，但是无论是否关闭入群提醒，都不会影响机器人的自动审核。</span></p></li></ul><h4><a name="5刷屏检测功能" class="md-header-anchor"></a><span>5.刷屏检测功能</span></h4><ul><li><span>规则：若群成员在同一个群中连续发送15条以上重复消息，或20秒内连续发送超过15条消息则会触发刷屏处罚，机器人将自动撤回此成员所有违规发言并给予禁言1天的处罚。</span></li></ul><h4><a name="6禁言功能" class="md-header-anchor"></a><span>6.禁言功能</span></h4><ul><li><p><span>指令：</span><code>禁言</code><span> 「QQ号或@QQ」 「时间」</span></p><p><span>权限：限超级管理员与机器人管理员（权限1或2）或QQ群群主和群管理员</span></p><p><span>例：禁言 123456 1天</span></p><p><span>注：禁言时间为：</span><code>秒</code><span>、</span><code>分钟</code><span>、</span><code>小时</code><span>、</span><code>天</code><span>为单位方可生效，禁言时间为0（秒、分钟、小时、天）即代表解除禁言。</span></p></li></ul><h4><a name="7批量撤回功能" class="md-header-anchor"></a><span>7.批量撤回功能</span></h4><ul><li><p><span>指令：</span><code>撤回</code><span> 「QQ号或@QQ」 </span><code>数量</code><span> 「撤回消息条数」</span></p><p><span>权限：限超级管理员与机器人管理员（权限1或2）或QQ群群主和群管理员</span></p><p><span>例：撤回 123456 数量 10</span></p><p><span>注：上述例子代表，撤回成员：123456在本群发送的最新10条消息。支持撤回机器人qq号发送词条答案的内容。</span></p></li></ul><h4><a name="8修改群名片功能" class="md-header-anchor"></a><span>8.修改群名片功能</span></h4><ul><li><p><span>指令：</span><code>修改群名片</code><span> qq号 新的群名片</span></p><p><span>权限：限超级管理员与机器人管理员（权限1或2）或QQ群群主和群管理员</span></p><p><span>例：修改群名片 123456 我是小明</span></p></li></ul><h4><a name="9移除功能" class="md-header-anchor"></a><span>9.移除功能</span></h4><ul><li><p><span>指令：</span><code>移除</code><span> 「QQ号或@QQ」</span></p><p><span>权限：限超级管理员与机器人管理员（权限1）或QQ群群主和群管理员</span></p><p><span>例：移除 123456</span></p><p><span>注：将群成员移出本群。</span></p></li></ul><h4><a name="10永久移除功能" class="md-header-anchor"></a><span>10.永久移除功能</span></h4><ul><li><p><span>指令：</span><code>永久移除</code><span> 「QQ号或@QQ」</span></p><p><span>权限：限超级管理员与机器人管理员（权限1）或QQ群群主和群管理员</span></p><p><span>例：移除 123456</span></p><p><span>注：将群成员移出本群，且不再接受其入群申请。</span></p></li></ul><h4><a name="11拉黑功能" class="md-header-anchor"></a><span>11.拉黑功能</span></h4><ul><li><p><span>指令：</span><code>拉黑</code><span> 「QQ号或@QQ」 </span><code>原因</code><span>  拉黑原因</span></p><p><span>权限：限超级管理员与机器人管理员（权限1）</span></p><p><span>例：拉黑 123456</span></p><p><span>注：将群成员拉黑，在所有机器人是管理员的群中自动将其踢出，若其再次申请加群将被直接拒绝。（机器人为管理员的所有群均生效）。</span></p></li></ul><h4><a name="12查询是否被拉黑及详情" class="md-header-anchor"></a><span>12.查询是否被拉黑及详情</span></h4><ul><li><p><span>指令：</span><code>查询黑名单</code><span>  「QQ号或@QQ」</span></p><p><span>权限：限超级管理员与机器人管理员（权限1、2）</span></p><p><span>例：查询黑名单 123456</span></p><p><span>注：查询是否被拉黑及详情（包括被拉黑的原因、操作者等信息）。</span></p></li></ul><h4><a name="13查询黑名单列表" class="md-header-anchor"></a><span>13.查询黑名单列表</span></h4><ul><li><p><span>指令：</span><code>黑名单列表</code></p><p><span>权限：限超级管理员与机器人管理员（权限1、2）</span></p><p><span>例：黑名单列表</span></p><p><span>注：查询所有已被拉黑的成员及详情（包括被拉黑的原因、操作者等信息）。</span></p></li></ul><h4><a name="14移出黑名单" class="md-header-anchor"></a><span>14.移出黑名单</span></h4><ul><li><p><span>指令：</span><code>移出黑名单</code><span>  「QQ号或@QQ」</span></p><p><span>权限：限超级管理员与机器人管理员（权限1、2）</span></p><p><span>例：移出黑名单 123456</span></p><p><span>注：将用户移出黑名单。</span></p></li></ul><h4><a name="15开启全员禁言取消全员禁言" class="md-header-anchor"></a><span>15.开启全员禁言/取消全员禁言</span></h4><ul><li><p><span>指令：</span><code>全员禁言</code><span> 或 </span><code>取消全员禁言</code></p><p><span>权限：限超级管理员与机器人管理员（权限1或2）或QQ群群主和群管理员</span></p><p><span>例：全员禁言</span></p><p><span>注：开启全员禁言或取消全员禁言</span></p></li></ul><h4><a name="16全体成员" class="md-header-anchor"></a><span>16.@全体成员</span></h4><ul><li><p><span>指令：</span><code>艾特全体</code><span> 消息内容</span></p><p><span>权限：限超级管理员与机器人管理员（权限1或2）或QQ群群主和群管理员</span></p><p><span>例：艾特全体 大家晚上好</span></p><p><span>注：@全体成员</span></p></li></ul><h4><a name="17开启关闭词条响应" class="md-header-anchor"></a><span>17.开启/关闭词条响应</span></h4><ul><li><p><span>指令：</span><code>开启词条响应</code><span>  或 </span><code>关闭词条响应</code></p><p><span>权限：限超级管理员与机器人管理员（权限1或2）或QQ群群主和群管理员</span></p><p><span>注：默认为开启词条响应，若关闭词条响应，则机器人将不再响应回答词库中的问题。</span></p></li></ul><hr /><h3><a name="欢迎语功能" class="md-header-anchor"></a><span>欢迎语功能</span></h3><p><span>注：每个群之间的欢迎语是相互独立的，在哪个群设置欢迎语，就是设置当前群的欢迎语。</span></p><h4><a name="1设置入群欢迎语" class="md-header-anchor"></a><span>1.设置入群欢迎语</span></h4><ul><li><p><span>指令：</span><code>设置欢迎语</code><span> 「欢迎语内容」</span></p><p><span>权限：限超级管理员、机器人管理员（权限1、2）或QQ群群主和群管理员</span></p><p><span>例： 设置欢迎语 欢迎加入机器人测试群！</span></p><p><span>注：新用户入群时会自动@他并发送欢迎语。</span></p></li></ul><h4><a name="2查询入群欢迎语" class="md-header-anchor"></a><span>2.查询入群欢迎语</span></h4><ul><li><p><span>指令：</span><code>查询欢迎语</code></p><p><span>权限：无限制</span></p><p><span>例：查询欢迎语</span></p><p><span>注：查询本群入群欢迎语</span></p></li></ul><h4><a name="3更新入群欢迎语" class="md-header-anchor"></a><span>3.更新入群欢迎语</span></h4><ul><li><p><span>指令：</span><code>更新欢迎语</code><span> 「欢迎语内容」</span></p><p><span>权限：限超级管理员与机器人管理员（权限1）或QQ群群主和群管理员</span></p><p><span>例：更新欢迎语 欢迎加入机器人测试群！</span></p><p><span>注：更新本群入群欢迎语，使用</span><code>设置欢迎语</code><span>亦可。</span></p></li></ul><h4><a name="4删除入群欢迎语" class="md-header-anchor"></a><span>4.删除入群欢迎语</span></h4><ul><li><p><span>指令：</span><code>删除欢迎语</code></p><p><span>权限：限超级管理员与机器人管理员（权限1）或QQ群群主和群管理员</span></p><p><span>例：删除欢迎语</span></p><p><span>注：删除本群入群欢迎语。</span></p></li></ul><hr /><h3><a name="报考相关功能" class="md-header-anchor"></a><span>报考相关功能</span></h3><h4><a name="1-录取查询功能" class="md-header-anchor"></a><span>1. 录取查询功能</span></h4><ul><li><p><span>指令：</span><code>录取查询</code><span> 「考生号或学号」</span></p><p><span>权限：所有用户均可使用，为避免个人信息泄露，请在私聊中使用（在群聊中使用会被机器人自动撤回）。</span></p><p><span>例：录取查询 350128199901019999</span></p><p><span>注：查询录取结果及通知书物流信息，请务必不要在群聊中使用！</span></p></li></ul><h4><a name="2各专业信息录入与查询所属学院就读校区院群群号专业介绍等" class="md-header-anchor"></a><span>2.各专业信息录入与查询(所属学院、就读校区、院群群号、专业介绍等)</span></h4><ul><li><p><span>指令：与学习功能大体一致，学习、修改、删除功能均在原来基础上加上“专业”即可，如  </span><code>学习专业</code><span> 专业全称 </span><code>回答</code><span> 专业详情；</span><code>查询专业</code><span> 专业全称。</span></p><p><span>全部专业词条触发调整为</span><code>专业学习项</code><span> 和 </span><code>专业词库</code><span>。</span></p><p><span>权限：和学习功能保持一致。</span></p><p><span>注：建议使用</span><code>包含学习专业</code><span> 专业全称 </span><code>回答</code><span> 专业详情 来进行报考专业的教学，使用包含学习专业的功能时，触发机制与“包含学习”略有不同，若学习了一个专业名称：软件工程，则群成员发送“软工”亦可触发。</span></p></li></ul><h4><a name="3报考辅助信息" class="md-header-anchor"></a><span>3.报考辅助信息</span></h4><ul><li><p><span>指令：</span><code>学习项</code><span> 或 </span><code>词库</code></p><p><span>权限：无限制</span></p><p><span>例：学习项</span></p><p><span>注：1000+海量报考与学校相关信息，请发送上述关键词查阅。</span></p></li></ul><hr /><h3><a name="消息转发功能" class="md-header-anchor"></a><span>消息转发功能</span></h3><h4><a name="1添加消息转发接收群" class="md-header-anchor"></a><span>1.添加消息转发接收群</span></h4><ul><li><p><span>指令：</span><code>添加消息转发接收群</code><span> 群号</span></p><p><span>权限：限超级管理员与机器人管理员（权限1）</span></p><p><span>例：添加消息转发接收群 123456</span></p><p><span>注：添加一个消息转发接收群群号，在这个群发言的所有内容会被转发到【消息转发发送群】中，机器人会自动监测重复的转发内容并提示。</span></p></li></ul><h4><a name="2删除消息转发接收群" class="md-header-anchor"></a><span>2.删除消息转发接收群</span></h4><ul><li><p><span>指令：</span><code>删除消息转发接收群</code><span> 群号</span></p><p><span>权限：限超级管理员与机器人管理员（权限1）</span></p><p><span>例：删除消息转发接收群 123456</span></p></li></ul><h4><a name="3查询消息转发接收群" class="md-header-anchor"></a><span>3.查询消息转发接收群</span></h4><ul><li><p><span>指令：</span><code>查询消息转发接收群</code><span> </span></p><p><span>权限：限超级管理员与机器人管理员（权限1、2）</span></p><p><span>例：查询消息转发接收群</span></p></li></ul><h4><a name="4添加消息转发发送群" class="md-header-anchor"></a><span>4.添加消息转发发送群</span></h4><ul><li><p><span>指令：</span><code>添加消息转发发送群</code><span> 群号</span></p><p><span>权限：限超级管理员与机器人管理员（权限1）</span></p><p><span>例：添加消息转发接收群 654321</span></p><p><span>注：添加一个消息转发发送群群号，在【消息转发接收群】中发送的内容会自动被机器人发到【消息转发发送群】中。</span></p></li></ul><h4><a name="5删除消息转发发送群" class="md-header-anchor"></a><span>5.删除消息转发发送群</span></h4><ul><li><p><span>指令：</span><code>删除消息转发发送群</code><span> 群号</span></p><p><span>权限：限超级管理员与机器人管理员（权限1）</span></p><p><span>例：删除消息转发接收群 654321</span></p></li></ul><h4><a name="6查询消息转发发送群" class="md-header-anchor"></a><span>6.查询消息转发发送群</span></h4><ul><li><p><span>指令：</span><code>查询消息转发发送群</code><span> </span></p><p><span>权限：限超级管理员与机器人管理员（权限1、2）</span></p><p><span>例：查询消息转发发送群</span></p></li></ul><h4><a name="7开启关闭相同消息转发检测" class="md-header-anchor"></a><span>7.开启/关闭相同消息转发检测</span></h4><ul><li><p><span>指令：</span><code>开启相同消息转发检测</code><span> 、</span><code>关闭相同消息转发检测</code></p><p><span>权限：限超级管理员与机器人管理员（权限1、2）</span></p><p><span>例：默认为开启相同消息转发检测，当相同消息转发检测关闭时，机器人将不再检测重复的消息，所有消息都将被转发。</span></p></li></ul><h4><a name="8批量撤回已转发的消息" class="md-header-anchor"></a><span>8.批量撤回已转发的消息</span></h4><ul><li><p><span>指令：</span><code>撤回转发消息</code><span> 「转发消息id」 、</span><code>撤回</code><span> 「转发消息id」</span></p><p><span>权限：转发消息接收群中的所有成员</span></p><p><span>注：每条转发消息末尾会自动带上【转发消息id】。</span></p></li></ul><h4><a name="9批量回复已转发的消息" class="md-header-anchor"></a><span>9.批量回复已转发的消息</span></h4><ul><li><p><span>指令：</span><code>回复</code><span> 「转发消息id」 </span></p><p><span>权限：转发消息接收群中的所有成员</span></p><p><span>注：每条转发消息末尾会自动带上【转发消息id】。</span></p></li></ul><h4><a name="10添加转发屏蔽词" class="md-header-anchor"></a><span>10.添加转发屏蔽词</span></h4><ul><li><p><span>指令：</span><code>添加转发屏蔽词</code><span> 「转发屏蔽词」 </span></p><p><span>权限：限超级管理员与机器人管理员（权限1或2）</span></p><p><span>例：添加转发屏蔽词 微信解封</span></p><p><span>注：添加转发屏蔽词以后，若转发消息中包含这一转发屏蔽词机器人将会拒绝转发，不能添加相同的转发屏蔽词或是有交叉部分的转发屏蔽词（如“解封”和“微信解封”）。</span></p></li></ul><h4><a name="11删除转发屏蔽词" class="md-header-anchor"></a><span>11.删除转发屏蔽词</span></h4><ul><li><p><span>指令：</span><code>删除转发屏蔽词</code><span> 「转发屏蔽词」 </span></p><p><span>权限：限超级管理员与机器人管理员（权限1或2）</span></p><p><span>例：删除转发屏蔽词 微信解封</span></p></li></ul><h4><a name="12转发屏蔽词列表" class="md-header-anchor"></a><span>12.转发屏蔽词列表</span></h4><ul><li><p><span>指令：</span><code>转发屏蔽词列表</code><span> </span></p><p><span>权限：限超级管理员与机器人管理员（权限1或2）</span></p><p><span>例：转发屏蔽词列表</span></p><p><span>注：查询所有转发屏蔽词信息</span></p></li></ul><h4><a name="13开启ifafu消息同步" class="md-header-anchor"></a><span>13.开启ifafu消息同步</span></h4><ul><li><p><span>指令：</span><code>开启ifafu消息同步</code><span> </span></p><p><span>权限：限超级管理员与机器人管理员（权限1）</span></p><p><span>例：开启ifafu消息同步</span></p><p><span>注：开启ifafu消息后，ifafu信息平台新增的帖子将自动同步到所有消息转发发送群中。</span></p></li></ul><h4><a name="14关闭ifafu消息同步" class="md-header-anchor"></a><span>14.关闭ifafu消息同步</span></h4><ul><li><p><span>指令：</span><code>关闭ifafu消息同步</code><span> </span></p><p><span>权限：限超级管理员与机器人管理员（权限1）</span></p><p><span>例：关闭ifafu消息同步</span></p></li></ul><p><span>注：在消息转发发送群(一般是消息通知群)中，词库词条触发将自动被屏蔽，同时入群自动审核的提示信息和欢迎语将不会发送，以保证通知群中仅显示通知信息。</span></p><h3><a name="其他功能" class="md-header-anchor"></a><span>其他功能</span></h3><h4><a name="1查询群成员的个人信息" class="md-header-anchor"></a><span>1.查询群成员的个人信息</span></h4><ul><li><p><span>指令：</span><code>我是谁</code></p><p><span>权限：无限制</span></p><p><span>例：我是谁</span></p><p><span>注：机器人会回复发送者的个人信息，包含昵称、Q龄、等级、群名片、群等级、入群时间等信息。</span></p></li></ul><h4><a name="2百度搜索功能" class="md-header-anchor"></a><span>2.百度搜索功能</span></h4><ul><li><p><span>指令：</span><code>百度</code><span> 「需要百度的内容」</span></p><p><span>权限：无限制</span></p><p><span>例：百度 QQ机器人</span></p><p><span>注：机器人会回复百度搜索的链接，点击链接即可搜索“QQ机器人”的相关信息。</span></p></li></ul><h4><a name="3天气查询功能" class="md-header-anchor"></a><span>3.天气查询功能</span></h4><ul><li><p><span>指令：国内市县区+天气</span></p><p><span>权限：无限制</span></p><p><span>例：福州天气</span></p><p><span>注：机器人会回复相关地区的天气信息。</span></p></li></ul><h4><a name="4点歌功能" class="md-header-anchor"></a><span>4.点歌功能</span></h4><ul><li><p><span>指令：</span><code>我想听</code><span>xxxx、</span><code>想听</code><span>xxxx、</span><code>点歌</code><span>xxxx、</span><code>来首</code><span>xxxx、</span><code>点歌</code><span>xxxx</span></p><p><span>权限：无限制</span></p><p><span>例：我想听素颜、我想听许嵩的歌、我想听林志炫的烟花易冷、我想听周杰伦的烟花易冷、我想听苦涩的沙吹痛脸庞的感觉</span></p><p><span>注：xxxx部分支持歌名、歌手名、歌词等，以xx的歌结尾，会随机发送一首歌，例如我想听许嵩的歌，则会随机发送一首许嵩的歌。</span></p></li></ul><h4><a name="5随机猫猫" class="md-header-anchor"></a><span>5.随机猫猫</span></h4><ul><li><p><span>指令：</span><code>随机猫猫</code></p><p><span>权限：无限制</span></p><p><span>例：随机猫猫</span></p><p><span>注：机器人会随机发送一只猫 🐈</span></p></li></ul><h4><a name="6查询所有群聊" class="md-header-anchor"></a><span>6.查询所有群聊</span></h4><ul><li><p><span>指令：</span><code>查询所有群聊</code></p><p><span>权限：限超级管理员与机器人管理员（权限1、2）</span></p><p><span>例：查询所有群聊</span></p><p><span>注：机器人会将其加入的所有群的群名、群号及是否为管理员合成一张图片发出。</span></p></li></ul><h4><a name="7执行sql" class="md-header-anchor"></a><span>7.执行SQL</span></h4><ul><li><p><span>指令：</span><code>执行SQL</code><span> 「sql语句」 </span><code>数据库</code><span> 「数据库名（含后缀）」</span></p><p><span>权限：限超级管理员</span></p><p><span>例：执行SQL DELETE FROM RobotStudyTable WHERE ID == 100 数据库 test.db</span></p><p><span>注：执行SQL语句。</span></p></li></ul><h4><a name="8查询关于机器人的信息及开源地址" class="md-header-anchor"></a><span>8.查询关于机器人的信息及开源地址</span></h4><ul><li><p><span>指令：</span><code>你是谁</code><span> 或 </span><code>关于</code></p><p><span>权限：无限制</span></p></li></ul><hr /><h3><a name="更多功能待添加" class="md-header-anchor"></a><span>更多功能，待添加...</span></h3><hr /><h3><a name="⏰-文档更新时间20201003-001040" class="md-header-anchor"></a><span>⏰ 文档更新时间：2020.10.03 00:10:40</span></h3><hr /><h3><a name="开源地址httpsgithubcomsmilezxleekqrobotextensionforfafu" class="md-header-anchor"></a><span>开源地址：(</span><a href='https://github.com/SmileZXLee/KQRobotExtensionForFAFU' target='_blank' class='url'>https://github.com/SmileZXLee/KQRobotExtensionForFAFU</a><span>)</span></h3><p>&nbsp;</p><p>&nbsp;</p><p><span>	</span></p><p>&nbsp;</p></div>
+</body>
+</html>
